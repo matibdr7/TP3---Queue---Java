@@ -1,8 +1,8 @@
-package Punto1;
+package Punto2;
 
 import java.util.Arrays;
 
-public class ColaCircularGenerica<T> {
+public class Queue1<T> {
     private final static Integer defaulDimension = 4;
 
     //region Attributes
@@ -12,12 +12,12 @@ public class ColaCircularGenerica<T> {
     //endregion
 
     // Constructor por defecto con tamaño predeterminado
-    public ColaCircularGenerica() {
-        this(ColaCircularGenerica.defaulDimension);
+    public Queue1() {
+        this(Queue1.defaulDimension);
     }
 
     // Constructor con tamaño personalizado
-    public ColaCircularGenerica(int dimension) {
+    public Queue1(int dimension) {
         this.data = (T[]) new Object[dimension];
         this.head = 0;
         this.tail = 0;
@@ -91,7 +91,4 @@ public class ColaCircularGenerica<T> {
     public boolean isEmpty() {
         return head == tail;
     }
-
-    
-
 }

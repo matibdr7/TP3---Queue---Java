@@ -1,97 +1,73 @@
+//PRIORIZO VELOCIDAD
+
 package Punto1;
 
-import java.util.Arrays;
+public class Queue<E>  {
 
-public class Queue<T> {
-    private final static Integer defaulDimension = 4;
+	protected final static Integer defaulDimension = 10;// Capacidad máxima de la cola
+    private E[] arreglo; // Arreglo para almacenar los elementos de la cola
+    private int frente; // Índice del frente de la cola
+    private int fin; // Índice del final de la cola
 
-    //region Attributes
-    private T[] data;
-    private int head;
-    private int tail;
-    //endregion
+    // Constructor
+    public Queue(int capacidad) {
+        this.arreglo = (E[]) new Object[capacidad];
+        this.frente = 0;
+        this.fin = -1;
+    }
 
-    // Constructor por defecto con tamaño predeterminado
     public Queue() {
-        this(Queue.defaulDimension);
-    }
+		this(Queue.defaulDimension);
+	}
 
-    // Constructor con tamaño personalizado
-    public Queue(int dimension) {
-        this.data = (T[]) new Object[dimension];
-        this.head = 0;
-        this.tail = 0;
-    }
-
-    // Calcula la siguiente posición en la cola circular
-    private int next(int pos) {
-        if (++pos >= this.data.length) {
-            pos = 0;
+	public void add(E elemento) {
+        // Verificar si la cola está llena
+        if (isFull()) {
+            throw new IllegalStateException("La cola está llena");
         }
-        return pos;
+        // Incrementar el índice del final y circular si es necesario
+        fin = (fin + 1) % defaulDimension;
+        // Insertar el elemento en el índice del final
+        arreglo[fin] = elemento;
     }
 
-    // Agrega un elemento a la cola, lanza una excepción si está llena
-    public boolean add(T element) {
-        if (head == next(tail)) {
-            throw new IllegalStateException("Cola llena ...");
+    public E remove() {
+        // Verificar si la cola está vacía
+        if (isEmpty()) {
+            throw new IllegalStateException("La cola está vacía");
         }
-        this.data[this.tail] = element;
-        this.tail = this.next(this.tail);
-        return true;
+        // Obtener el elemento del frente de la cola
+        E elemento = arreglo[frente];
+        // Mover el índice del frente al siguiente elemento (circular si es necesario)
+        frente = (frente + 1) % defaulDimension;
+        return elemento;
     }
 
-    // Devuelve el elemento en el frente de la cola, lanza excepción si está vacía
-    public T element() {
-        if (head == tail) {
-            throw new IllegalStateException("Cola vacía ...");
+    public E element() {
+        // Verificar si la cola está vacía
+        if (isEmpty()) {
+            throw new IllegalStateException("La cola está vacía");
         }
-        return this.data[this.head];
+        // Devolver el elemento del frente de la cola
+        return arreglo[frente];
     }
 
-    // Intenta agregar un elemento a la cola, devuelve false si está llena
-    public boolean offer(T element) {
-        if (head == next(tail)) {
-            return false;
-        }
-        this.data[this.tail] = element;
-        this.tail = this.next(this.tail);
-        return true;
-    }
-
-    // Devuelve el elemento en el frente de la cola sin eliminarlo, devuelve null si está vacía
-    public T peek() {
-        if (head == tail) {
-            return null;
-        }
-        return this.data[this.head];
-    }
-
-    // Devuelve y elimina el elemento en el frente de la cola, devuelve null si está vacía
-    public T pool() {
-        if (head == tail) {
-            return null;
-        }
-        T result = this.data[this.head];
-        this.head = this.next(this.head);
-        return result;
-    }
-
-    // Devuelve y elimina el elemento en el frente de la cola, lanza excepción si está vacía
-    public T remove() {
-        if (head == tail) {
-            throw new IllegalStateException("Cola vacía ...");
-        }
-        T result = this.data[this.head];
-        this.head = this.next(this.head);
-        return result;
-    }
-
-    // Devuelve true si la cola está vacía, false en caso contrario
     public boolean isEmpty() {
-        return head == tail;
+        // La cola está vacía si frente y fin están en la misma posición
+        return frente == (fin + 1) % defaulDimension;
     }
 
-    
+    public boolean isFull() {
+        // La cola está llena si el siguiente índice después de fin es igual a frente
+        return frente == (fin + 2) % defaulDimension;
+    }
 
+    public int size() {
+        // Calcular el tamaño de la cola en tiempo real
+        if (isEmpty()) {
+            return 0;
+        } else {
+            return (fin - frente + 1 + defaulDimension) % defaulDimension;
+        }
+    }
 }
