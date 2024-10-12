@@ -8,9 +8,37 @@ Al finalizar, el programa debe mostrar la cantidad de trabajos, cuya cantidad de
 */
 
 package Punto3;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args){
+        Scanner entrada = new Scanner(System.in);
+        Queue cola = new Queue<>();
 
+    }
+
+    public static void menu(Scanner entrada, Queue cola){
+        while(true){
+            System.out.println(
+                "1- Agregar documento\n"+
+                "2- Imprimir documento\n"+
+                "3- Salir\n"
+                );
+
+            int opcion = Helper.getInteger("Ingrese una opcion: ", "Error... Ingrese un valor numerico valido");
+
+            switch (opcion) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    System.out.println("Saliendo . . .");
+                    return;
+                default:
+                    System.out.println("Ingrese una opcion valida");
+                    break;
+            }
+        }
     }
 }
