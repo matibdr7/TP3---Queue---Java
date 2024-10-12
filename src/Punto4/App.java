@@ -17,9 +17,38 @@ Al finalizar, informar la cantidad de visitantes menores de edad que tuvo el par
 */
 
 package Punto4;
+import java.util.Scanner;
+import Punto1.Cliente;
+import java.util.Random;
 
 public class App {
     public static void main(String[] args){
+        Scanner entrada = new Scanner(System.in);
+        Random random = new Random();
+        Queue colaGeneral = new Queue<>();
+        Queue colaMontaña = new Queue<>();
+        Queue colaCalesita = new Queue<>();
+        
+        ingresarFilaGeneral(entrada, colaGeneral, random);
+        System.out.println(colaGeneral);
 
     }
+
+    public static void ingresarFilaGeneral(Scanner entrada, Queue colaGeneral, Random random){
+        int n = random.nextInt(15);
+        System.out.println("n = "+n);
+        for (int i = 0; i < n; i++) {
+            int idVisitante = Helper.getInteger("Ingrese el id del visitante: ", "Ingrese un valor numerico valido");
+        
+            System.out.println("Ingrese el Apellido y Nombre del visitante");
+            String aynVisitante = entrada.nextLine();
+            
+            int edad = Helper.getInteger("Ingrese la edad del cliente", "Ingrese una edad valida");
+    
+            Visitante visitante = new Visitante(idVisitante, aynVisitante, edad);
+            colaGeneral.add(visitante);
+        }    
+    }
+    
+
 }

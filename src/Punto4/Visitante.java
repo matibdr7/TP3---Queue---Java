@@ -39,7 +39,4 @@ public class Visitante {
     public String toString() {
         return "Visitante [idVisitante=" + idVisitante + ", aynVisitante=" + aynVisitante + ", Edad=" + Edad + "]";
     }
-
-    
-
 }
