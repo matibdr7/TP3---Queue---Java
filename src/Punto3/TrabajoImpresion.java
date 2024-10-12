@@ -3,24 +3,24 @@
 package Punto3;
 
 public class TrabajoImpresion {
-    private int codTrabajao;
+    private int codTrabajo;
     private String nomTrabajo;
     private int cantPagTrabajo;
 
     public TrabajoImpresion() {
     }
 
-    public TrabajoImpresion(int codTrabajao, String nomTrabajo, int cantPagTrabajo) {
-        this.codTrabajao = codTrabajao;
+    public TrabajoImpresion(int codTrabajo, String nomTrabajo, int cantPagTrabajo) {
+        this.codTrabajo = codTrabajo;
         this.nomTrabajo = nomTrabajo;
         this.cantPagTrabajo = cantPagTrabajo;
     }
 
-    public int getCodTrabajao() {
-        return codTrabajao;
+    public int getcodTrabajo() {
+        return codTrabajo;
     }
-    public void setCodTrabajao(int codTrabajao) {
-        this.codTrabajao = codTrabajao;
+    public void setcodTrabajo(int codTrabajo) {
+        this.codTrabajo = codTrabajo;
     }
     public String getNomTrabajo() {
         return nomTrabajo;
@@ -37,7 +37,7 @@ public class TrabajoImpresion {
 
     @Override
     public String toString() {
-        return "TrabajoImpresion [codTrabajao=" + codTrabajao + ", nomTrabajo=" + nomTrabajo + ", cantPagTrabajo="
+        return "TrabajoImpresion [codTrabajo=" + codTrabajo + ", nomTrabajo=" + nomTrabajo + ", cantPagTrabajo="
                 + cantPagTrabajo + "]";
     }
 
