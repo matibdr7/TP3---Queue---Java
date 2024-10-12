@@ -43,9 +43,7 @@ public class App {
                     System.out.println("Ingrese una opcion valida");
                     break;
             }
-
             System.out.println(cola);
-
         }
     }
 
@@ -78,5 +76,4 @@ public class App {
         }
         System.out.println("La cantidad de trabajos que tienen: "+num+" paginas son: " +nBuscado);  
     }
-
 }
