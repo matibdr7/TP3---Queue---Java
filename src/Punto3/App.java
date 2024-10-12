@@ -14,7 +14,7 @@ public class App {
     public static void main(String[] args){
         Scanner entrada = new Scanner(System.in);
         Queue cola = new Queue<>();
-
+        menu(entrada, cola);
     }
 
     public static void menu(Scanner entrada, Queue cola){
@@ -23,12 +23,13 @@ public class App {
                 "1- Agregar documento\n"+
                 "2- Imprimir documento\n"+
                 "3- Salir\n"
-                );
+            );
 
             int opcion = Helper.getInteger("Ingrese una opcion: ", "Error... Ingrese un valor numerico valido");
 
             switch (opcion) {
                 case 1:
+                    insertarDocumentos(entrada, cola);
                     break;
                 case 2:
                     break;
@@ -41,4 +42,17 @@ public class App {
             }
         }
     }
+
+    public static void insertarDocumentos(Scanner entrada, Queue cola){
+        int codTrabajo = Helper.getInteger("Ingrese el codigo de trabajo", "Ingrese un valor numerico valido");
+        
+        System.out.println("Ingrese el nombre de trabajo: ");
+        String nomTrabajo = entrada.nextLine();
+        
+        int cantPagTrabajo = Helper.getInteger("Ingrese la cantidad de paginas: ", "Ingrese un valor numerico valido: ");
+
+        TrabajoImpresion trabajo = new TrabajoImpresion(codTrabajo, nomTrabajo, cantPagTrabajo);
+        cola.add(trabajo);
+    }
+
 }
