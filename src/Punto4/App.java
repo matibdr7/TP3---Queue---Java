@@ -30,6 +30,8 @@ public class App {
         Queue colaCalesita = new Queue<>();
         
         ingresarFilaGeneral(entrada, colaGeneral, random);
+
+
         System.out.println(colaGeneral);
 
     }
@@ -50,5 +52,17 @@ public class App {
         }    
     }
     
+    public static void dividirFilas(Scanner entrada, Queue colaGeneral, Queue colaMontaña, Queue colaCalesita){
+        while(!colaGeneral.isEmpty()){
+            Visitante visitante = (Visitante) colaGeneral.remove();
+            if(visitante.getEdad()>12){
+                colaMontaña.add(visitante);
+            }else{
+                colaCalesita.add(visitante);
+            }
+        }
+    }
+
+
 
 }
