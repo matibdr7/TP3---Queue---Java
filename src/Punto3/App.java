@@ -70,10 +70,10 @@ public class App {
         int nBuscado = 0;
         while(!colaImpresos.isEmpty()){
             TrabajoImpresion trabajo = (TrabajoImpresion) colaImpresos.remove();
-            if(trabajo.getCantPagTrabajo() == num){
+            if(trabajo.getCantPagTrabajo() >= num){
                 ++nBuscado;
             }
         }
-        System.out.println("La cantidad de trabajos que tienen: "+num+" paginas son: " +nBuscado);  
+        System.out.println("La cantidad de trabajos que tienen: "+num+" o más paginas son: " +nBuscado);  
     }
 }
