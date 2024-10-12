@@ -14,10 +14,11 @@ public class App {
     public static void main(String[] args){
         Scanner entrada = new Scanner(System.in);
         Queue cola = new Queue<>();
-        menu(entrada, cola);
+        Queue colaImpresos = new Queue<>();
+        menu(entrada, cola, colaImpresos);
     }
 
-    public static void menu(Scanner entrada, Queue cola){
+    public static void menu(Scanner entrada, Queue cola, Queue colaImpresos){
         while(true){
             System.out.println(
                 "1- Agregar documento\n"+
@@ -32,10 +33,11 @@ public class App {
                     insertarDocumentos(entrada, cola);
                     break;
                 case 2:
-                    imprimirDocumentos(cola);
+                    imprimirDocumentos(cola, colaImpresos);
                     break;
                 case 3:
-                    System.out.println("Saliendo . . .");
+                    contarCantidad(colaImpresos);
+                    System.out.println("\nSaliendo . . .");
                     return;
                 default:
                     System.out.println("Ingrese una opcion valida");
@@ -59,8 +61,22 @@ public class App {
         cola.add(trabajo);
     }
 
-    public static void imprimirDocumentos(Queue cola){
-        System.out.println("Imprimiendo: "+cola.remove()+" . . .");
+    public static void imprimirDocumentos(Queue cola, Queue colaImpresos){
+        TrabajoImpresion impreso = (TrabajoImpresion) cola.remove();
+        System.out.println("Imprimiendo: "+impreso+" . . .");
+        colaImpresos.add(impreso);
+    }
+
+    public static void contarCantidad(Queue colaImpresos){
+        int num = Helper.getInteger("Ingrese la cantidad de paginas a filtrar: ", "Ingrese un valor numerico valido: ");
+        int nBuscado = 0;
+        while(!colaImpresos.isEmpty()){
+            TrabajoImpresion trabajo = (TrabajoImpresion) colaImpresos.remove();
+            if(trabajo.getCantPagTrabajo() == num){
+                ++nBuscado;
+            }
+        }
+        System.out.println("La cantidad de trabajos que tienen: "+num+" paginas son: " +nBuscado);  
     }
 
 }
