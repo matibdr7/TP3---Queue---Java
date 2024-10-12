@@ -37,8 +37,8 @@ public class TrabajoImpresion {
 
     @Override
     public String toString() {
-        return "TrabajoImpresion [codTrabajo=" + codTrabajo + ", nomTrabajo=" + nomTrabajo + ", cantPagTrabajo="
-                + cantPagTrabajo + "]";
+        return "codTrabajo: " + codTrabajo + ", nomTrabajo: " + nomTrabajo + ", cantPagTrabajo: "
+                + cantPagTrabajo+"\n";
     }
 
     

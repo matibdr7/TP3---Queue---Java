@@ -32,6 +32,7 @@ public class App {
                     insertarDocumentos(entrada, cola);
                     break;
                 case 2:
+                    imprimirDocumentos(cola);
                     break;
                 case 3:
                     System.out.println("Saliendo . . .");
@@ -40,6 +41,9 @@ public class App {
                     System.out.println("Ingrese una opcion valida");
                     break;
             }
+
+            System.out.println(cola);
+
         }
     }
 
@@ -53,6 +57,10 @@ public class App {
 
         TrabajoImpresion trabajo = new TrabajoImpresion(codTrabajo, nomTrabajo, cantPagTrabajo);
         cola.add(trabajo);
+    }
+
+    public static void imprimirDocumentos(Queue cola){
+        System.out.println("Imprimiendo: "+cola.remove()+" . . .");
     }
 
 }
